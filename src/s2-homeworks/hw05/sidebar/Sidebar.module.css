@@ -1,25 +1,76 @@
+/* 1. Базовое состояние (скрыто) */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Прячем за левый край экрана */
+    width: 300px;
+    height: 100vh;
+    background-color: #ffffff;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    box-sizing: border-box; /* Чтобы padding не ломал ширину */
 }
 
-.sidebar.open {
+/* 2. Открытое состояние */
+.open {
+    left: 0;
 }
 
+/* 3. Затемнение фона */
 .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
+/* 4. Кнопка закрытия */
+.close {
+    align-self: flex-end; /* В правый край */
+    margin-top: 15px;
+    margin-right: 15px;
+    padding: 5px; /* Увеличивает область клика */
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    display: flex;       /* Центрируем крестик внутри кнопки */
+    align-items: center;
+    justify-content: center;
+}
+
+/* 5. Навигация */
 .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    padding: 0 70px;
 }
 
+/* Базовые стили для всех ссылок (вынесены наверх) */
 .nav a {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 22px;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.2s ease; /* Плавная смена цвета */
 }
 
 .nav a:hover {
+    color: #58acff;
 }
 
 .nav a.active {
-}
-.close {
-}
-
-.close img {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #0059b2;
 }
